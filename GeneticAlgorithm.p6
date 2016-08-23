@@ -78,7 +78,7 @@ sub generation($count) {
 	}
 }
 
-sub MAIN(Int :gens($gens)) {
+sub MAIN(Int :$gens) {
 	genPop;
 	generation($gens);
 }
