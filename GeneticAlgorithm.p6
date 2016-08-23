@@ -1,11 +1,11 @@
 use v6;
 
-my $POP_SIZE = 500;
-my $GENES = 32;
-my $MRATE = 1/300;
-my $CRATE = .90;
-my $RRATE = 1-($MRATE+$CRATE);
-my $TOURNEYSIZE = 10;
+my $POP_SIZE;
+my $GENES;
+my $MRATE;
+my $CRATE;
+my $RRATE;
+my $TOURNEYSIZE;
 
 my @population;
 
@@ -78,7 +78,18 @@ sub generation($count) {
 	}
 }
 
-sub MAIN(Int :$gens) {
+sub MAIN(Int :$gens = 10, 
+	 Int :$popsize = 500, 
+	 Int :$genes = 32,
+	 :$mrate = 1/300,
+	 :$crate = .9,
+	 :$tourneysize = 10) {
+	$POP_SIZE = $popsize;
+	$GENES = $genes;
+	$MRATE = $mrate;
+	$CRATE = $crate;
+	$RRATE = 1-($MRATE+$CRATE);
+	$TOURNEYSIZE = $tourneysize;
 	genPop;
 	generation($gens);
 }
